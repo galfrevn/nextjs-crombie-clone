@@ -11,7 +11,7 @@ const handleNav = () => {
 
 function Navbar() {
   return (
-    <navbar className="relative">
+    <nav className="relative">
       <div className="w-screen px-8 bg-[rgba(0,0,0,.75)] z-10 fixed top-0 left-0 py-4 flex justify-between">
         <div className="w-[74px]">
           <Image
@@ -51,6 +51,7 @@ function Navbar() {
           src="https://crombie.dev/_nuxt/img/18a97ff.png"
           alt=""
           className="transform -translate-x-9"
+          priority
         />
         <div className="text-gray-600 px-7 pt-5">
           <div className="flex space-x-3 ">
@@ -69,7 +70,7 @@ function Navbar() {
           <XIcon className="w-4 h-4" />
         </button>
       </div>
-    </navbar>
+    </nav>
   );
 }
 
