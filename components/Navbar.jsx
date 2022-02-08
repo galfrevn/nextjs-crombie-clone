@@ -1,12 +1,12 @@
 import React from "react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
-
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const handleNav = () => {
   const menu = document.getElementById("side");
   menu.classList.toggle("-left-96");
+  menu.classList.toggle("left-0");
 };
 
 function Navbar() {
@@ -29,7 +29,7 @@ function Navbar() {
 
       <div
         id="side"
-        className="fixed bg-white w-4/5 h-screen left-0 top-0 transition-all duration-1000 z-40"
+        className="fixed bg-white w-4/5 h-screen -left-96 top-0 transition-all duration-1000 z-40"
       >
         <div className="text-black px-7 pt-5">
           <p className="text-[7px] text-gray-600">Menu</p>
@@ -62,10 +62,12 @@ function Navbar() {
           <p className="text-[7px] ">Made by Valentín Galfré</p>
         </div>
 
-        <button className="absolute right-5 top-5 text-gray-600" onClick={handleNav}  >
+        <button
+          className="absolute right-5 top-5 text-gray-600"
+          onClick={handleNav}
+        >
           <XIcon className="w-4 h-4" />
         </button>
-
       </div>
     </navbar>
   );
