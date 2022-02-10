@@ -8,7 +8,6 @@ function BottomOverlay() {
     window.addEventListener("scroll", () => {
       setScroll(window.scrollY > 50);
     });
-    console.log(scroll);
   }, [scroll]);
 
   return (

@@ -2,6 +2,7 @@ import React from "react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import Link from "next/link";
 
 const handleNav = () => {
   const menu = document.getElementById("side");
@@ -14,14 +15,20 @@ function Navbar() {
     <nav className="relative">
       <div className="w-screen px-8 bg-[rgba(0,0,0,.75)] z-10 fixed top-0 left-0 py-4 flex justify-between">
         <div className="w-[74px]">
-          <Image
-            layout="responsive"
-            width="100%"
-            height="30px"
-            src="https://crombie.dev/_nuxt/img/b3434f4.svg"
-            alt=""
-          />
+          <Link href="/" passHref>
+            <div>
+              <Image
+                layout="responsive"
+                width="100%"
+                height="30px"
+                src="https://crombie.dev/_nuxt/img/b3434f4.svg"
+                alt=""
+                priority
+              />
+            </div>
+          </Link>
         </div>
+
         <button onClick={handleNav}>
           <MenuIcon className="w-4 h-4 text-white" />
         </button>
@@ -33,10 +40,22 @@ function Navbar() {
       >
         <div className="text-black px-7 pt-5">
           <p className="text-[7px] text-gray-600">Menu</p>
-          <ul className="text-[1.3rem] space-y-0.5 mt-3  font-extrabold">
-            <li>Culture</li>
-            <li>Services</li>
-            <li>Work</li>
+          <ul className="flex-col flex items-start space-y-0.5 mt-3">
+            <Link passHref href="/culture">
+              <button onClick={handleNav}>
+                <li className="text-[1.3rem] font-extrabold" >Culture</li>
+              </button>
+            </Link>
+            <Link passHref href="/services">
+              <button onClick={handleNav}>
+                <li className="text-[1.3rem] font-extrabold" >Services</li>
+              </button>
+            </Link>
+            <Link passHref href="/work">
+              <button onClick={handleNav}>
+                <li className="text-[1.3rem] font-extrabold" >Work</li>
+              </button>
+            </Link>
           </ul>
           <p className="text-xs font-medium mt-3 mb-2 ">Work With Us</p>
           <p className="text-xs font-medium">Let&apos;s talk</p>
