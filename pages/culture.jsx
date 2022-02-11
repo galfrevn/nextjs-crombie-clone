@@ -1,7 +1,7 @@
 import Head from "next/head";
 import BottomOverlay from "../components/BottomOverlay"
 import PageHeader from "../components/PageHeader";
-import DisclosureComp from "../components/UI/Disclosure";
+import DisclosureComp from "../components/ui/DisclosureComp";
 
 export default function Culture() {
   return (
