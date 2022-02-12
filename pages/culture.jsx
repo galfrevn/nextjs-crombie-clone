@@ -1,7 +1,8 @@
 import Head from "next/head";
-import BottomOverlay from "../components/BottomOverlay"
+import BottomOverlay from "../components/BottomOverlay";
 import PageHeader from "../components/PageHeader";
 import DisclosureComp from "../components/ui/DisclosureComp";
+import TesimonialCarousel from "../components/ui/TesimonialCarousel";
 
 export default function Culture() {
   return (
@@ -16,8 +17,20 @@ export default function Culture() {
       <PageHeader page="culture" />
       <DisclosureComp />
 
-      <BottomOverlay />
+      <div className="bg-black">
+        <div className="py-5 border-b-[.5px] border-[#f36] mb-4 ">
+          <div className="px-8 text-xs font-bold leading-4">
+            <p>
+              What’s Crombie <br />
+              for its people?
+            </p>
+          </div>
+        </div>
+        <TesimonialCarousel/>
+      </div>
+     
 
+      <BottomOverlay />
     </div>
   );
 }
