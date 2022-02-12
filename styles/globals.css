@@ -6,6 +6,14 @@
   font-family: "Poppins", sans-serif;
 }
 
-.carousel .control-arrow, .carousel.carousel-slider .control-arrow {
+html {
+  background-color: black;
+}
+
+.carousel .control-arrow,
+.carousel.carousel-slider .control-arrow {
   top: 130px !important;
+}
+.react-multiple-carousel__arrow--left {
+  display: none;
 }

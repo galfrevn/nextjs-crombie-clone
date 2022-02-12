@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Services from "../components/Services";
 import Study from "../components/Study";
-import BottomOverlay from "../components/BottomOverlay"
+import BottomOverlay from "../components/BottomOverlay";
 import PageHeader from "../components/PageHeader";
+import BrandsCarousel from "../components/ui/BrandsCarousel";
 
 export default function Home() {
   return (
@@ -13,13 +14,28 @@ export default function Home() {
         <link rel="icon" href="/logo.ico" />
         <meta name="theme-color" content="#000000" />
       </Head>
-      
+
       <PageHeader page="home" />
       <Services />
       <Study />
 
-      <BottomOverlay />
+      <div className="w-screen mt-20">
+        <video autoPlay muted loop>
+          <source
+            src="https://crombie.dev/_nuxt/videos/c974c6b.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <h1 className="pt-6 px-8 font-extrabold text-3xl mb-4">We have been a tech partner for</h1>
+        
+        <BrandsCarousel />
 
+        <p className="px-8 text-[10px] pb-20 ">
+          That require qualified teams to developr their projects.
+        </p>
+      </div>
+
+      <BottomOverlay />
     </div>
   );
 }

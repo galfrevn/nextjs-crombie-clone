@@ -27,6 +27,7 @@ function PageHeader({ page }) {
               height="46px"
               src="https://crombie.dev/_nuxt/img/b703e84.png"
               alt=""
+              priority
             />
           </div>
         </div>

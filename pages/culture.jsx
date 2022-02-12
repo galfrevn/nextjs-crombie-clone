@@ -26,7 +26,7 @@ export default function Culture() {
             </p>
           </div>
         </div>
-        <TesimonialCarousel/>
+        <TesimonialCarousel type="testimonial" />
       </div>
      
 
