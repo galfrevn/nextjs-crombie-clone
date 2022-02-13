@@ -4,6 +4,7 @@ import Study from "../components/Study";
 import BottomOverlay from "../components/BottomOverlay";
 import PageHeader from "../components/PageHeader";
 import BrandsCarousel from "../components/ui/BrandsCarousel";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -26,14 +27,18 @@ export default function Home() {
             type="video/mp4"
           />
         </video>
-        <h1 className="pt-6 px-8 font-extrabold text-3xl mb-4">We have been a tech partner for</h1>
-        
+        <h1 className="pt-6 px-8 font-extrabold text-3xl mb-4">
+          We have been a tech partner for
+        </h1>
+
         <BrandsCarousel />
 
         <p className="px-8 text-[10px] pb-20 ">
           That require qualified teams to developr their projects.
         </p>
       </div>
+
+      <Footer />
 
       <BottomOverlay />
     </div>

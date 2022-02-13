@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
+import BlackButton from "../components/ui/BlackButton"
 
 
 const handleClick = () => {
@@ -49,9 +50,8 @@ function Study() {
             The goal was to build a community of users who can babysit each
             other&apos;s pets on demand.
           </p>
-          <button className="bg-black mt-6 text-[8px] px-9 py-1.5 border rounded-full border-[#e1e1e1] ">
-            Check our services
-          </button>
+          
+          <BlackButton text="View case study" />
         </div>
       </div>
     </div>

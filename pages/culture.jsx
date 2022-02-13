@@ -3,6 +3,7 @@ import BottomOverlay from "../components/BottomOverlay";
 import PageHeader from "../components/PageHeader";
 import DisclosureComp from "../components/ui/DisclosureComp";
 import TesimonialCarousel from "../components/ui/TesimonialCarousel";
+import Footer from "../components/Footer"
 
 export default function Culture() {
   return (
@@ -17,7 +18,7 @@ export default function Culture() {
       <PageHeader page="culture" />
       <DisclosureComp />
 
-      <div className="bg-black">
+      <div className="bg-black mb-20">
         <div className="py-5 border-b-[.5px] border-[#f36] mb-4 ">
           <div className="px-8 text-xs font-bold leading-4">
             <p>
@@ -29,6 +30,7 @@ export default function Culture() {
         <TesimonialCarousel type="testimonial" />
       </div>
      
+      <Footer />
 
       <BottomOverlay />
     </div>

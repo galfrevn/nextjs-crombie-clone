@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
@@ -11,9 +11,20 @@ const handleNav = () => {
 };
 
 function Navbar() {
+  const [scroll, setScroll] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 50);
+    });
+  }, [scroll]);
+
   return (
-    <nav className="relative">
-      <div className="w-screen px-8 bg-[rgba(0,0,0,.75)] z-10 fixed top-0 left-0 py-4 flex justify-between">
+    <nav className="relative Z-60">
+      <div
+        className={`${
+          !scroll ? "bg-transparent" : "bg-[rgba(0,0,0,.75)]"
+        } " w-screen px-8 z-30 fixed top-0 left-0 py-4 flex justify-between "`}
+      >
         <div className="w-[74px]">
           <Link href="/" passHref>
             <div>
@@ -43,17 +54,17 @@ function Navbar() {
           <ul className="flex-col flex items-start space-y-0.5 mt-3">
             <Link passHref href="/culture">
               <button onClick={handleNav}>
-                <li className="text-[1.3rem] font-extrabold" >Culture</li>
+                <li className="text-[1.3rem] font-extrabold">Culture</li>
               </button>
             </Link>
             <Link passHref href="/services">
               <button onClick={handleNav}>
-                <li className="text-[1.3rem] font-extrabold" >Services</li>
+                <li className="text-[1.3rem] font-extrabold">Services</li>
               </button>
             </Link>
             <Link passHref href="/work">
               <button onClick={handleNav}>
-                <li className="text-[1.3rem] font-extrabold" >Work</li>
+                <li className="text-[1.3rem] font-extrabold">Work</li>
               </button>
             </Link>
           </ul>

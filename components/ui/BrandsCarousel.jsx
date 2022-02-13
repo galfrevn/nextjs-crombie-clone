@@ -28,8 +28,9 @@ function BrandsCarousel() {
   const [brand, setBrand] = useState("Software");
 
   return (
-    <div className="px-8 pb-4 transition-all duration-1000">
+    <div className="px-8 pb-1 transition-all duration-1000">
       <Carousel
+        autoPlay={true}
         responsive={responsive}
         swipeable={true}
         draggable={true}

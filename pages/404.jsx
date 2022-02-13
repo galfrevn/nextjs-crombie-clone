@@ -1,5 +1,6 @@
 import Head from "next/head";
 import ErrorHeader from "../components/ErrorHeader";
+import Footer from "../components/Footer";
 
 export default function Custom404() {
   return (
@@ -12,6 +13,9 @@ export default function Custom404() {
       </Head>
 
       <ErrorHeader />
+      <div className="text-white">
+        <Footer />
+      </div>
     </div>
   );
 }

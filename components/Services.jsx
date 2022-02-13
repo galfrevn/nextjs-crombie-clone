@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import BlackButton from "../components/ui/BlackButton"
 
 function Services() {
   return (
@@ -15,9 +16,7 @@ function Services() {
           end-to-end.
         </p>
 
-        <button className="bg-black mt-6 text-[8px] px-9 py-1.5 border rounded-full border-[#e1e1e1] " >
-          Check our services
-        </button>
+        <BlackButton text="Check our services" />
 
       </div>
 
