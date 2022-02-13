@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
-import React, { useEffect } from "react";
-import { useState } from "react/cjs/react.development";
+import React, { useEffect, useState } from "react";
 import BlackButton from "../components/ui/BlackButton";
 
 export default function Work() {
