@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import Image from "next/image";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { useRouter } from "next/router";
+import Image from "next/image";
 import Link from "next/link";
 
 const handleNav = () => {
@@ -11,7 +12,9 @@ const handleNav = () => {
 };
 
 function Navbar() {
+  const router = useRouter();
   const [scroll, setScroll] = useState(false);
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setScroll(window.scrollY > 50);
@@ -22,8 +25,10 @@ function Navbar() {
     <nav className="relative Z-60">
       <div
         className={`${
-          !scroll ? "bg-transparent" : "bg-[rgba(0,0,0,.75)]"
-        } " w-screen px-8 z-30 fixed top-0 left-0 py-4 flex justify-between "`}
+          !scroll || router.pathname === "/work"
+            ? "bg-transparent"
+            : "bg-[rgba(0,0,0,.75)]"
+        } " w-screen transition-all duration-500 px-8 z-30 fixed top-0 left-0 py-4 flex justify-between "`}
       >
         <div className="w-[74px]">
           <Link href="/" passHref>
@@ -69,7 +74,14 @@ function Navbar() {
             </Link>
           </ul>
           <p className="text-xs font-medium mt-3 mb-2 ">Work With Us</p>
-          <p className="text-xs font-medium">Let&apos;s talk</p>
+          <Link passHref href="/contact">
+            <button onClick={handleNav}>
+              <p className="text-xs cursor-pointer font-medium">
+                Let&apos;s talk
+              </p>
+            </button>
+          </Link>
+
           <p className="text-[7px] my-4 text-gray-600">
             Find us on <strong>Clutch</strong>{" "}
           </p>

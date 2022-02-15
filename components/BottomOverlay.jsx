@@ -19,7 +19,7 @@ function BottomOverlay() {
           <ArrowCircleDownIcon className="w-5 h-5 text-[#383838] " />
           <p className="text-[10px] ml-2 text-[#5f5f5f]">Scroll</p>
         </div>
-        <h3 className="text-[11px] font-bold">Let&apos;s talk</h3>
+        <h3 className="text-[11px] text-white font-bold">Let&apos;s talk</h3>
       </div>
     </div>
   );

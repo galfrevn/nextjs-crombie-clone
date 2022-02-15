@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import { motion, AnimatePresence } from "framer-motion";
 import NextNProgress from "nextjs-progressbar";
+import BottomOverlay from '../components/BottomOverlay'
 
 function MyApp({ Component, pageProps, router }) {
   return (
@@ -26,6 +27,7 @@ function MyApp({ Component, pageProps, router }) {
             <Component {...pageProps} />
           </motion.div>
         </AnimatePresence>
+        <BottomOverlay />
       </div>
     </>
   );

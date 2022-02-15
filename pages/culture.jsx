@@ -1,5 +1,4 @@
 import Head from "next/head";
-import BottomOverlay from "../components/BottomOverlay";
 import PageHeader from "../components/PageHeader";
 import DisclosureComp from "../components/ui/DisclosureComp";
 import TesimonialCarousel from "../components/ui/TesimonialCarousel";
@@ -19,7 +18,7 @@ export default function Culture() {
       <DisclosureComp />
 
       <div className="bg-black mb-20">
-        <div className="py-5 border-b-[.5px] border-[#f36] mb-4 ">
+        <div className="py-5 mb-4 ">
           <div className="px-8 text-xs font-bold leading-4">
             <p>
               What’s Crombie <br />
@@ -32,7 +31,6 @@ export default function Culture() {
      
       <Footer />
 
-      <BottomOverlay />
     </div>
   );
 }

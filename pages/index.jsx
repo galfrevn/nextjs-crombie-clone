@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Services from "../components/Services";
 import Study from "../components/Study";
-import BottomOverlay from "../components/BottomOverlay";
 import PageHeader from "../components/PageHeader";
 import BrandsCarousel from "../components/ui/BrandsCarousel";
 import Footer from "../components/Footer";
@@ -40,7 +39,6 @@ export default function Home() {
 
       <Footer />
 
-      <BottomOverlay />
     </div>
   );
 }
