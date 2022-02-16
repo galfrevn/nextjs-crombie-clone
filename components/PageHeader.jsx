@@ -27,7 +27,8 @@ function PageHeader({ page }) {
               height="46px"
               src="https://crombie.dev/_nuxt/img/b703e84.png"
               alt=""
-              priority
+              placeholder="blur"
+              blurDataURL="https://crombie.dev/_nuxt/img/b703e84.png"
             />
           </div>
         </div>

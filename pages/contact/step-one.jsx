@@ -1,14 +1,24 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import BlackButton from "../components/ui/BlackButton";
+import StepsRow from "../../components/StepsRow";
+import BlackButton from "../../components/ui/BlackButton";
 
 export default function Contact() {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    console.log(errors);
+    if (!errors.length) {
+      router.push("/")
+    }
+  };
 
   return (
     <div className="bg-black h-screen">
@@ -27,6 +37,7 @@ export default function Contact() {
         <form
           action=""
           className="text-[11px]"
+          autoComplete="off"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="mb-4 ">
@@ -34,14 +45,12 @@ export default function Contact() {
             <input
               {...register("name", {
                 required: true,
-                maxLength: 20,
-                pattern: /^[A-Za-z]+$/i,
               })}
               type="text"
               placeholder="Your name"
               className={`${
-                errors.name ? "focus:border-b-red-800 " : ""
-              } w-full py-1 pr-3 leading-tight focus:outline-none focus:border-b-[#282826] focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
+                errors.name ? "focus:border-b-red-800 " : "focus:border-b-[#282826]"
+              } w-full py-1 pr-3 leading-tight focus:outline-none  focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
             />
             <div className="text-red-800 text-[10px]  ">
               {errors.name?.type === "required" && "A name is required"}
@@ -53,16 +62,23 @@ export default function Contact() {
             <input
               {...register("email", {
                 required: true,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "invalid email address"
+                }
               })}
               type="text"
               placeholder="Your email"
               className={`${
-                errors.email ? "focus:border-b-red-800 " : ""
-              } w-full py-1 pr-3 leading-tight focus:outline-none focus:border-b-[#282826] focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
+                errors.email ? "focus:border-b-red-800 " : "focus:border-b-[#282826]"
+              } w-full py-1 pr-3 leading-tight focus:outline-none  focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
             />
             <div className="text-red-800 text-[10px]  ">
               {errors.email?.type === "required" && "Email is required"}
+              {errors.email?.type === "pattern" && "Please, enter a valid email"}
+              
             </div>
+            
           </div>
 
           <div className="mb-4 ">
@@ -70,14 +86,12 @@ export default function Contact() {
             <input
               {...register("city", {
                 required: true,
-                maxLength: 20,
-                pattern: /^[A-Za-z]+$/i,
               })}
               type="text"
               placeholder="City, country"
               className={`${
-                errors.city ? "focus:border-b-red-800 " : ""
-              } w-full py-1 pr-3 leading-tight focus:outline-none focus:border-b-[#282826] focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
+                errors.city ? "focus:border-b-red-800 " : "focus:border-b-[#282826]"
+              } w-full py-1 pr-3 leading-tight focus:outline-none  focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
             />
             <div className="text-red-800 text-[10px]  ">
               {errors.city?.type === "required" && "Please fill this field"}
@@ -90,14 +104,12 @@ export default function Contact() {
               <input
                 {...register("company", {
                   required: true,
-                  maxLength: 20,
-                  pattern: /^[A-Za-z]+$/i,
                 })}
                 type="text"
                 placeholder="Your company"
                 className={`${
-                  errors.company ? "focus:border-b-red-800 " : ""
-                } w-full py-1 pr-3 leading-tight focus:outline-none focus:border-b-[#282826] focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
+                  errors.company ? "focus:border-b-red-800 " : "focus:border-b-[#282826]"
+                } w-full py-1 pr-3 leading-tight focus:outline-none  focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
               />
               <div className="text-red-800 text-[10px]  ">
                 {errors.company?.type === "required" && "Company is required"}
@@ -124,7 +136,7 @@ export default function Contact() {
             <textarea
               {...register("info")}
               type="text"
-              rows="2"
+              rows="1"
               placeholder="City, country"
               className={
                 "resize-none w-full py-1 pr-3 leading-tight focus:outline-none focus:border-b-[#282826] focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] "
@@ -141,22 +153,12 @@ export default function Contact() {
               type="text"
               placeholder="City, country"
               className={`${
-                errors.place ? "focus:border-b-red-800 " : ""
-              } w-full py-1 pr-3 leading-tight focus:outline-none focus:border-b-[#282826] focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
+                errors.place ? "focus:border-b-red-800 " : "focus:border-b-[#282826]"
+              } w-full py-1 pr-3 leading-tight focus:outline-none  focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
             />
           </div>
           <div className="flex items-center justify-between">
-            <div className="text-white flex flex-col items-start  w-1/2">
-              <div className="flex text-[8px] space-x-1 mb-1">
-                <p> 1 </p>
-                <p className="text-[#777] ">/</p>
-                <p className="text-[#777] "> 2</p>
-              </div>
-
-              <div className="w-full bg-[#979797] h-[1px] ">
-                <div className="bg-white h-[1px] w-1/6"></div>
-              </div>
-            </div>
+            <StepsRow step={1} />
             <BlackButton text="Next" type="white" />
           </div>
         </form>

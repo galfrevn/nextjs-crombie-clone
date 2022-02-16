@@ -74,7 +74,7 @@ function Navbar() {
             </Link>
           </ul>
           <p className="text-xs font-medium mt-3 mb-2 ">Work With Us</p>
-          <Link passHref href="/contact">
+          <Link passHref href="/contact/step-one">
             <button onClick={handleNav}>
               <p className="text-xs cursor-pointer font-medium">
                 Let&apos;s talk
