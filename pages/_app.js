@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import { motion, AnimatePresence } from "framer-motion";
 import NextNProgress from "nextjs-progressbar";
-import BottomOverlay from '../components/BottomOverlay'
+import BottomOverlay from "../components/BottomOverlay";
 
 function MyApp({ Component, pageProps, router }) {
   return (
@@ -18,9 +18,11 @@ function MyApp({ Component, pageProps, router }) {
             variants={{
               pageInitial: {
                 opacity: 0,
+                x: -10,
               },
               pageAnimate: {
                 opacity: 1,
+                x: 0,
               },
             }}
           >

@@ -13,10 +13,8 @@ export default function Contact() {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
-    console.log(errors);
     if (!errors.length) {
-      router.push("/")
+      router.push("/contact/step-two")
     }
   };
 
