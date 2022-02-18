@@ -3,24 +3,51 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import StepsRow from "../../components/StepsRow";
 import BlackButton from "../../components/ui/BlackButton";
-import { ChevronLeftIcon } from "@heroicons/react/outline";
+import { CheckIcon, ChevronLeftIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { Range, getTrackBackground } from "react-range";
 import { useEffect, useState } from "react";
+import { RadioGroup } from "@headlessui/react";
 
-const STEP = 1000;
-const MIN = 1000;
+const STEP = 4000;
+const MIN = 0;
 const MAX = 100000;
+
+const plans = [
+  {
+    name: "I don't know",
+  },
+  {
+    name: "1 - 4 months",
+  },
+  {
+    name: "5 - 12 months",
+  },
+  {
+    name: "+ 12 months",
+  },
+];
 
 export default function Contact() {
   const router = useRouter();
-  const [values, setValues] = useState([10000]);
+
+  const [values, setValues] = useState([0]);
+  const [selected, setSelected] = useState(plans[0]);
 
   useEffect(() => {
     if (values == 100000) {
       console.log("100k");
-      document.getElementById("output").innerHTML = "+100k"
+      document.getElementById("output").innerHTML = "+100k";
     }
+    values < 20000
+      ? setSelected(() => plans[0])
+      : values >= 20000 && values < 50000
+      ? setSelected(() => plans[1])
+      : values > 50000 && values < 72000
+      ? setSelected(() => plans[2])
+      : values >= 72000
+      ? setSelected(() => plans[3])
+      : setSelected(() => plans[0]);
   }, [values]);
 
   const {
@@ -32,7 +59,7 @@ export default function Contact() {
     console.log(data);
     console.log(errors);
     if (!errors.length) {
-      router.push("/contact/step-four");
+      router.push("/contact/step-five");
     }
   };
 
@@ -56,67 +83,124 @@ export default function Contact() {
           autoComplete="off"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <Range
-            values={values}
-            step={STEP}
-            min={MIN}
-            max={MAX}
-            onChange={(values) => setValues(values)}
-            renderTrack={({ props, children }) => (
-              <div
-                onMouseDown={props.onMouseDown}
-                onTouchStart={props.onTouchStart}
-                style={{
-                  ...props.style,
-                  height: "36px",
-                  display: "flex",
-                  width: "100%",
-                }}
-              >
+          <label className=" text-white font-bold mb-2">My budget is</label>
+          <div className="w-full text-[#CCC] flex items-center justify-start space-x-5 overflow-hidden">
+            <p>0</p>
+            <Range
+              values={values}
+              step={STEP}
+              min={MIN}
+              max={MAX}
+              onChange={(values) => setValues(values)}
+              renderTrack={({ props, children }) => (
                 <div
-                  ref={props.ref}
+                  onMouseDown={props.onMouseDown}
+                  onTouchStart={props.onTouchStart}
                   style={{
-                    height: "1px",
-                    width: "100%",
-                    borderRadius: "4px",
-                    background: getTrackBackground({
-                      values,
-                      colors: ["#CCC", "#777"],
-                      min: MIN,
-                      max: MAX,
-                    }),
-                    alignSelf: "center",
+                    ...props.style,
+                    height: "36px",
+                    display: "flex",
+                    width: "60%",
                   }}
                 >
-                  {children}
+                  <div
+                    ref={props.ref}
+                    style={{
+                      height: "1px",
+                      width: "100%",
+                      borderRadius: "4px",
+                      background: getTrackBackground({
+                        values,
+                        colors: ["#CCC", "#777"],
+                        min: MIN,
+                        max: MAX,
+                      }),
+                      alignSelf: "center",
+                    }}
+                  >
+                    {children}
+                  </div>
                 </div>
-              </div>
-            )}
-            renderThumb={({ props, isDragged }) => (
-              <div
-                {...props}
-                style={{
-                  ...props.style,
-                  height: "10px",
-                  width: "10px",
-                  borderRadius: "4px",
-                  backgroundColor: "#CCC",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                className="focus-visible:border-none focus-visible:outline-none"
-              ></div>
-            )}
-          />
-          <output className="text-white mt-1" id="output">
-            {values[0].toFixed(0)}
-          </output>
+              )}
+              renderThumb={({ props, isDragged }) => (
+                <div
+                  {...props}
+                  style={{
+                    ...props.style,
+                    height: "10px",
+                    width: "10px",
+                    borderRadius: "4px",
+                    backgroundColor: "#CCC",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  className="focus-visible:border-none focus-visible:outline-none"
+                ></div>
+              )}
+            />
+            <output id="output">{values[0].toFixed(0)}</output>
+          </div>
+
+          <div className="w-full flex pb-3 border-b-[.5px] mb-5 border-b-[#777] flex-col text-white">
+            <select className="bg-black text-[#777] appearance-none focus:outline-none ">
+              <option value="Corp" className="p-2 border-none">
+                USD
+              </option>
+              <option value="Startup" className="p-2 border-none">
+                ARS
+              </option>
+            </select>
+          </div>
+
+          <label className="text-white font-bold ">
+            My spected timeline is
+          </label>
+
+          <RadioGroup value={selected} onChange={setSelected}>
+            <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
+            <div className="space-y-1 my-4">
+              {plans.map((plan) => (
+                <RadioGroup.Option
+                  key={plan.name}
+                  value={plan}
+                  className={({ active, checked }) =>
+                    `${
+                      active
+                        ? "border-white border-[.5px]"
+                        : "border-[.5px] border-[#777] "
+                    }
+                  ${checked ? "bg-white text-black" : "bg-black"}
+                    relative transition-all duration-300 rounded-sm px-2 py-1.5 cursor-pointer flex focus:outline-none`
+                  }
+                >
+                  {({ active, checked }) => (
+                    <>
+                      <div className="flex  items-center justify-center w-full">
+                        <div className="flex justify-center items-center">
+                          <div className="text-[9px]  ">
+                            <RadioGroup.Label
+                              as="p"
+                              className={`font-medium  ${
+                                checked ? "text-black" : "text-white"
+                              } transition-all duration-300`}
+                            >
+                              {plan.name}
+                            </RadioGroup.Label>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </RadioGroup.Option>
+              ))}
+            </div>
+          </RadioGroup>
 
           <div className="flex items-center justify-between">
             <StepsRow step={4} />
             <div className="flex items-center">
-              <Link href={"/contact/step-two"} passHref>
+              <Link href={"/contact/step-three"} passHref>
                 <ChevronLeftIcon className="w-4 h-4 mr-2 p-[1px] rounded-full border-[#777] border-[1px] text-[#777] " />
               </Link>
               <BlackButton text="Next" type="white" />

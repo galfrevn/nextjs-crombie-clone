@@ -47,10 +47,10 @@ export default function Contact() {
               type="text"
               placeholder="Your name"
               className={`${
-                errors.name ? "focus:border-b-red-800 " : "focus:border-b-[#282826]"
+                errors.name ? "focus:border-b-red-700 " : "focus:border-b-[#282826]"
               } w-full py-1 pr-3 leading-tight focus:outline-none  focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
             />
-            <div className="text-red-800 text-[10px]  ">
+            <div className="text-red-700 text-[10px]  ">
               {errors.name?.type === "required" && "A name is required"}
             </div>
           </div>
@@ -68,10 +68,10 @@ export default function Contact() {
               type="text"
               placeholder="Your email"
               className={`${
-                errors.email ? "focus:border-b-red-800 " : "focus:border-b-[#282826]"
+                errors.email ? "focus:border-b-red-700 " : "focus:border-b-[#282826]"
               } w-full py-1 pr-3 leading-tight focus:outline-none  focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
             />
-            <div className="text-red-800 text-[10px]  ">
+            <div className="text-red-700 text-[10px]  ">
               {errors.email?.type === "required" && "Email is required"}
               {errors.email?.type === "pattern" && "Please, enter a valid email"}
               
@@ -88,10 +88,10 @@ export default function Contact() {
               type="text"
               placeholder="City, country"
               className={`${
-                errors.city ? "focus:border-b-red-800 " : "focus:border-b-[#282826]"
+                errors.city ? "focus:border-b-red-700 " : "focus:border-b-[#282826]"
               } w-full py-1 pr-3 leading-tight focus:outline-none  focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
             />
-            <div className="text-red-800 text-[10px]  ">
+            <div className="text-red-700 text-[10px]  ">
               {errors.city?.type === "required" && "Please fill this field"}
             </div>
           </div>
@@ -106,10 +106,10 @@ export default function Contact() {
                 type="text"
                 placeholder="Your company"
                 className={`${
-                  errors.company ? "focus:border-b-red-800 " : "focus:border-b-[#282826]"
+                  errors.company ? "focus:border-b-red-700 " : "focus:border-b-[#282826]"
                 } w-full py-1 pr-3 leading-tight focus:outline-none  focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
               />
-              <div className="text-red-800 text-[10px]  ">
+              <div className="text-red-700 text-[10px]  ">
                 {errors.company?.type === "required" && "Company is required"}
               </div>
             </div>
@@ -151,7 +151,7 @@ export default function Contact() {
               type="text"
               placeholder="City, country"
               className={`${
-                errors.place ? "focus:border-b-red-800 " : "focus:border-b-[#282826]"
+                errors.place ? "focus:border-b-red-700 " : "focus:border-b-[#282826]"
               } w-full py-1 pr-3 leading-tight focus:outline-none  focus:border-b-[1px] bg-black text-[#777] placeholder:text-[11px] placeholder:text-[#282826] `}
             />
           </div>
